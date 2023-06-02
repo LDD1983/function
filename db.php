@@ -1,18 +1,20 @@
 <?php
-echo "<pre>";
-echo print_r(all('images'));
-echo "</pre>";
-echo "<pre>";
-echo print_r(find('images','1'));
-echo "</pre>";
+// echo "<pre>";
+// echo print_r(all('images'));
+// echo "</pre>";
+// echo "<pre>";
+// echo print_r(find('images','1'));
+// echo "</pre>";
 
-$tmp1='popmjj';
-$tmp2 = 'ihouhoi';
+// $tmp1='popmjj';
+// $tmp2 = 'ihouhoi';
 
-echo "'\$tmp1'";
-echo "<br>";
+// echo "'\$tmp1'";
+// echo "<br>";
 
-echo "{'$tmp1'}='$tmp1'" ;
+// echo "{'$tmp1'}='$tmp1'" ;
+
+dd(all('images'));
 
 
 
@@ -78,22 +80,29 @@ function delete($table,$id){
     $dsn = "mysql:host=localhost;charset=utf8;dbname=upload";
     $pdo = new PDO($dsn,'root','');
 
-    
-
-
-
-   
-
     $sql = "delete  from `$table`
                               
-                                where `id` ='$id' ";
-
-
+                    where `id` ='$id' ";
+                    
    $result=$pdo->exec($sql);
 
    return $result;
 
 }
+
+function q($sql){
+    $dsn = "mysql:host=localhost;charset=utf8;dbname=vote";
+    $pdo = new PDO($dsn,'root','');
+
+    return $pdo->query($sql)->fetchAll();
+}
+
+function dd($array){
+    echo"<pre>";
+    print_r($array);
+    echo"</pre>";
+}
+
 
 
 
